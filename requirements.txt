@@ -1,7 +1,8 @@
 colorama
 passlib
 dnspython
-loguru   # loguru version = '0.5.3' is known good
+pytest
+loguru=='0.5.3'
 
 [:python_version<'3']
 ipaddr>=2.1.11

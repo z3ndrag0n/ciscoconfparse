@@ -19,7 +19,10 @@ from ciscoconfparse.ccp_util import IPv4Obj
 ###   Use models_asa.py at your own risk.  You have been warned :-)
 
 """ models_asa.py - Parse, Query, Build, and Modify IOS-style configurations
-     Copyright (C) 2014-2015 David Michael Pennington
+
+     Copyright (C) 2020-2021 Cisco Systems
+     Copyright (C) 2019      ThousandEyes
+     Copyright (C) 2014-2019 Samsung Data Services
 
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
@@ -329,7 +332,7 @@ class BaseASAIntfLine(ASACfgLine):
     def ipv4_addr(self):
         """Return a string with the interface's IPv4 address, or '' if there is none"""
         retval = self.re_match_iter_typed(
-            r"^\s+ip\s+address\s+(\d+\.\d+\.\d+\.\d+)\s+\d+\.\d+\.\d+\.\d+(\sstandby\s+\S+\s*)*$",
+            r"^\s+ip\s+address\s+(\d+\.\d+\.\d+\.\d+)",
             result_type=str,
             default="",
         )
@@ -349,7 +352,7 @@ class BaseASAIntfLine(ASACfgLine):
     def ipv4_netmask(self):
         """Return a string with the interface's IPv4 netmask, or '' if there is none"""
         retval = self.re_match_iter_typed(
-            r"^\s+ip\s+address\s+\d+\.\d+\.\d+\.\d+\s+(\d+\.\d+\.\d+\.\d+)(\sstandby\s+\S+\s*)*$",
+            r"^\s+ip\s+address\s+\d+\.\d+\.\d+\.\d+\s+(\d+\.\d+\.\d+\.\d+)",
             result_type=str,
             default="",
         )
